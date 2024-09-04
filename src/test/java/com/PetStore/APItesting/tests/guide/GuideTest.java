@@ -11,6 +11,7 @@ import com.PetStore.APItesting.base.testsetup.AbstractBaseTest;
 import io.qameta.allure.*;
 import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
+import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -72,6 +73,20 @@ public class GuideTest extends AbstractBaseTest {
                 response.then().assertThat()
                                 .statusCode(HttpStatus.SC_OK)
                                 .body(matchesJsonSchemaInClasspath("schemas/guide/Pet-post-200-Ok-schema.json"));
+
+        }
+
+        @Test(groups = { TestGroups.SMOKE, TestGroups.GUIDE })
+        @Severity(SeverityLevel.CRITICAL)
+        @Description("Get pet - happy path")
+        public void getPet(ITestContext context) {
+                String subPath = String.format("/%s", "findByStatus");
+                Response response = given().spec(request)
+                        .queryParam("status", "available")
+                        .get("" + subPath);
+                Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_OK);
+                response.then()
+                        .body(matchesJsonSchemaInClasspath("schemas/guide/Pet-post-200-Ok-schema.json"));
 
         }
 
