@@ -1,0 +1,9 @@
+/Users/karen.duque/Developer/PersonaL/petStore_api_automation/src/test/java/com/PetStore/APItesting/base/testsetup/AbstractBaseTest.java
+/Users/karen.duque/Developer/PersonaL/petStore_api_automation/src/test/java/com/PetStore/APItesting/base/testsetup/TokenSetupException.java
+/Users/karen.duque/Developer/PersonaL/petStore_api_automation/src/test/java/com/PetStore/APItesting/model/Category.java
+/Users/karen.duque/Developer/PersonaL/petStore_api_automation/src/test/java/com/PetStore/APItesting/model/Pet.java
+/Users/karen.duque/Developer/PersonaL/petStore_api_automation/src/test/java/com/PetStore/APItesting/model/Tags.java
+/Users/karen.duque/Developer/PersonaL/petStore_api_automation/src/test/java/com/PetStore/APItesting/tests/guide/GuideTest.java
+/Users/karen.duque/Developer/PersonaL/petStore_api_automation/src/test/java/com/PetStore/APItesting/utilities/commons/TestGroups.java
+/Users/karen.duque/Developer/PersonaL/petStore_api_automation/src/test/java/com/PetStore/APItesting/utilities/commons/Utilities.java
+/Users/karen.duque/Developer/PersonaL/petStore_api_automation/src/test/java/com/PetStore/APItesting/utilities/service/ServicePath.java

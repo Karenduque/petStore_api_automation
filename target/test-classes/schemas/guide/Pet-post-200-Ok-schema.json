@@ -1,0 +1,91 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": [
+    "object",
+    "array"
+  ],
+  "title": "Pet",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "default": 1,
+      "examples": [
+        1
+      ]
+    },
+    "name": {
+      "type": "string",
+      "default": "Topi",
+      "examples": [
+        "Topi"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "default": "available",
+      "examples": [
+        "available"
+      ]
+    },
+    "category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "default": 1,
+          "examples": [
+            1
+          ]
+        },
+        "name": {
+          "type": "string",
+          "default": "Topi",
+          "examples": [
+            "Topi"
+          ]
+        }
+      }
+    },
+    "photoUrls": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "default": "available",
+        "examples": [
+          "available"
+        ]
+      }
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "default": 1,
+            "examples": [
+              1
+            ]
+          },
+          "name": {
+            "type": "string",
+            "default": "Chihuahu",
+            "examples": [
+              "Chihuahu"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "status",
+    "category",
+    "photoUrls",
+    "tags"
+  ],
+  "additionalProperties": false
+}

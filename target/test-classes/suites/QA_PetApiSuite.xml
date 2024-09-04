@@ -1,0 +1,29 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Pet Store Suite - QA environment" verbose="1" configfailurepolicy="continue">
+    <!-- Default Groups for manual runs, you can use mvn params -Dgroups= -DexcludedGroups= in the cli command. -->
+    <groups>
+        <run>
+            <include name="SMOKE" />
+        </run>
+    </groups>
+    <parameter name="BaseURL" value="https://petstore3.swagger.io/api/v3/pet" />
+    <parameter name="API_version" value="" />
+
+    <test name="Guide Test" parallel="methods">
+        <parameter name="id" value="1" />
+        <parameter name="name" value="Toppi" />
+        <parameter name="idCategory" value="1" />
+        <parameter name="nameCategory" value="categoria1" />
+        <parameter name="photoUrls" value="array"/>
+        <parameter name="idTags1" value="1" />
+        <parameter name="nameTagss1" value="tag1" />
+        <parameter name="idTags2" value="2" />
+        <parameter name="nameTagss2" value="tag2" />
+        <parameter name="status" value="completo" />
+        <packages>
+            <package name="com.PetStore.APItesting.tests.guide.*"/>
+        </packages>
+    </test>
+
+</suite>

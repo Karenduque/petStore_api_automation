@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": [
+    "object",
+    "array"
+  ],
+  "title": "Pet Bad Request",
+  "properties": {
+    "code": {
+      "type": "integer",
+      "default": 500,
+      "examples": [
+        500
+      ]
+    },
+    "message": {
+      "type": "string",
+      "default": "There was an error processing your request. It has been logged (ID: 14b47ef4be1abda3)",
+      "examples": [
+        "There was an error processing your request. It has been logged (ID: 14b47ef4be1abda3)"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,9 @@
+com/PetStore/APItesting/model/Tags.class
+com/PetStore/APItesting/utilities/commons/TestGroups.class
+com/PetStore/APItesting/model/Category.class
+com/PetStore/APItesting/utilities/service/ServicePath.class
+com/PetStore/APItesting/model/Pet.class
+com/PetStore/APItesting/tests/guide/GuideTest.class
+com/PetStore/APItesting/base/testsetup/TokenSetupException.class
+com/PetStore/APItesting/base/testsetup/AbstractBaseTest.class
+com/PetStore/APItesting/utilities/commons/Utilities.class
