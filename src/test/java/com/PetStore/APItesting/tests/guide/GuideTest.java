@@ -72,6 +72,52 @@ public class GuideTest extends AbstractBaseTest {
                 response.then().assertThat()
                                 .statusCode(HttpStatus.SC_OK)
                                 .body(matchesJsonSchemaInClasspath("schemas/guide/Pet-post-200-Ok-schema.json"));
+
+        }
+
+        @Test(groups = { TestGroups.SMOKE, TestGroups.GUIDE })
+        @Severity(SeverityLevel.CRITICAL)
+        @Description("add a pet - happy path")
+        @Parameters({ "id", "name", "status" })
+        public void puttAddPet(Integer id, String name, String status, ITestContext context) {
+
+                Gson gson = new Gson();
+
+                Category category = new Category();
+                category.setId(context.hashCode());
+                category.setName("Juana");
+
+                ArrayList<String> photoUrls= new ArrayList<String>();
+                photoUrls.add("photo");
+
+                ArrayList<Tags> tags= new ArrayList<Tags>();
+                Tags tagsObject = new Tags();
+                tagsObject.setId(1);
+                tagsObject.setName("Perla");
+                tagsObject.setId(0);
+                tagsObject.setName("Kenai");
+                tags.add(tagsObject);
+
+
+                Pet pet = new Pet();
+                pet.setId(id);
+                pet.setName(name);
+                pet.setCategory(category);
+                pet.setPhotoUrls(photoUrls);
+                pet.setTags(tags);
+                pet.setStatus(status);
+
+
+                String bodyRequest = gson.toJson(pet);
+                JsonObject bodyPayload = JsonParser.parseString(bodyRequest).getAsJsonObject();
+                Response response = given().spec(request)
+                        .header("Content-type", "application/json; charset=UTF-8")
+                        .body(bodyPayload.toString())
+                        .put("");
+
+                response.then().assertThat()
+                        .statusCode(HttpStatus.SC_OK)
+                        .body(matchesJsonSchemaInClasspath("schemas/guide/Pet-post-200-Ok-schema.json"));
         }
 
         @Test(groups = { TestGroups.SMOKE, TestGroups.GUIDE })
