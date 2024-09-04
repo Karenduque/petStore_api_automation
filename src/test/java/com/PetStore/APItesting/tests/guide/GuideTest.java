@@ -79,7 +79,7 @@ public class GuideTest extends AbstractBaseTest {
         @Severity(SeverityLevel.CRITICAL)
         @Description("add a pet - happy path")
         @Parameters({ "id", "name", "status" })
-        public void puttAddPet(Integer id, String name, String status, ITestContext context) {
+        public void puttPet(Integer id, String name, String status, ITestContext context) {
 
                 Gson gson = new Gson();
 
