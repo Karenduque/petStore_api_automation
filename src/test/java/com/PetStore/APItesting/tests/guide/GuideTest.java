@@ -116,4 +116,87 @@ public class GuideTest extends AbstractBaseTest {
                         .body(matchesJsonSchemaInClasspath("schemas/guide/Pet-post-200-Ok-schema.json"));
         }
 
+
+        @Test(groups = { TestGroups.SMOKE, TestGroups.GUIDE })
+        @Severity(SeverityLevel.CRITICAL)
+        @Description("add a pet - happy path")
+        @Parameters({ "id", "name", "status" })
+        public void postAddPetBadRequest(Integer id, String name, String status, ITestContext context) {
+
+                Gson gson = new Gson();
+
+                Category category = new Category();
+                category.setId(1);
+                category.setName("Perla");
+
+                ArrayList<String> photoUrls= new ArrayList<String>();
+                photoUrls.add("photo");
+
+                ArrayList<Tags> tags= new ArrayList<Tags>();
+                Tags tagsObject = new Tags();
+                tagsObject.setId(1);
+                tagsObject.setName("Perla");
+                //tagsObject.setId(0);
+                tagsObject.setName("Kenai");
+                tags.add(tagsObject);
+
+
+                Pet pet = new Pet();
+                pet.setName(name);
+                pet.setCategory(category);
+                pet.setTags(tags);
+                pet.setStatus(status);
+
+                String bodyRequest = gson.toJson(pet);
+                JsonObject bodyPayload = JsonParser.parseString(bodyRequest).getAsJsonObject();
+                Response response = given().spec(request)
+                        .header("Content-type", "application/json; charset=UTF-8")
+                        .body(bodyPayload.toString())
+                        .post("");
+
+                response.then().assertThat()
+                        .statusCode(HttpStatus.SC_BAD_REQUEST)
+                        .body(matchesJsonSchemaInClasspath("schemas/guide/Pet-post-500-BadRequest-schema.json"));
+        }
+
+
+        @Test(groups = { TestGroups.SMOKE, TestGroups.GUIDE })
+        @Severity(SeverityLevel.CRITICAL)
+        @Description("add a pet - happy path")
+        @Parameters({ "id", "name", "status" })
+        public void postAddPetInternalServer(Integer id, String name, String status, ITestContext context) {
+                Gson gson = new Gson();
+
+                Category category = new Category();
+                category.setId(1);
+                category.setName("Perla");
+
+                ArrayList<String> photoUrls= new ArrayList<String>();
+                photoUrls.add("photo");
+
+                ArrayList<Tags> tags= new ArrayList<Tags>();
+                Tags tagsObject = new Tags();
+                tagsObject.setId(1);
+                tagsObject.setName("Perla");
+                tagsObject.setId(0);
+                tagsObject.setName("Kenai");
+
+                Pet pet = new Pet();
+                pet.setName(name);
+                pet.setCategory(category);
+
+                String bodyRequest = gson.toJson(pet);
+                JsonObject bodyPayload = JsonParser.parseString(bodyRequest).getAsJsonObject();
+                Response response = given().spec(request)
+                        .header("Content-type", "application/json; charset=UTF-8")
+                        .body(bodyPayload.toString())
+                        .post("");
+
+                response.then().assertThat()
+                        .statusCode(HttpStatus.SC_INTERNAL_SERVER_ERROR)
+
+                        .body(matchesJsonSchemaInClasspath("schemas/guide/Pet-post-500-BadRequest-schema.json"));
+        }
+
+
 }
